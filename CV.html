@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Krzysztof Pajak - Senior Software Developer</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --ink: #1a1d23;
+    --ink-soft: #4a4e59;
+    --ink-muted: #7b7f8e;
+    --accent: #2d5a7b;
+    --accent-light: #e8f0f6;
+    --surface: #ffffff;
+    --rule: #d4d8e0;
+    --rule-light: #eceef2;
+    --sidebar-bg: #f5f6f8;
+    --font-display: 'Cormorant Garamond', Georgia, serif;
+    --font-body: 'Outfit', -apple-system, sans-serif;
+  }
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+
+  html { font-size: 15px; }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--ink);
+    background: #e8e8e8;
+    line-height: 1.55;
+    font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    width: 210mm;
+    height: 297mm;
+    margin: 20px auto;
+    background: var(--surface);
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.12);
+    overflow: hidden;
+  }
+
+  /* ── Sidebar ── */
+  .sidebar {
+    background: var(--sidebar-bg);
+    padding: 32px 20px 20px;
+    border-right: 1px solid var(--rule-light);
+  }
+
+  .sidebar-section { margin-bottom: 18px; }
+
+  .sidebar-heading {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--accent);
+    margin-bottom: 8px;
+    padding-bottom: 4px;
+    border-bottom: 1.5px solid var(--accent);
+  }
+
+  .contact-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    margin-bottom: 6px;
+    font-size: 0.72rem;
+    color: var(--ink-soft);
+    line-height: 1.4;
+    word-break: break-word;
+  }
+
+  .contact-item svg {
+    flex-shrink: 0;
+    width: 13px;
+    height: 13px;
+    margin-top: 1px;
+    color: var(--accent);
+  }
+
+  .contact-item a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+    transition: border-color 0.2s;
+  }
+
+  .contact-item a:hover { border-bottom-color: var(--accent); }
+
+  .skill-category {
+    margin-bottom: 10px;
+  }
+
+  .skill-category-name {
+    font-size: 0.68rem;
+    font-weight: 600;
+    color: var(--ink);
+    margin-bottom: 4px;
+  }
+
+  .skill-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 3px;
+  }
+
+  .skill-tag {
+    font-size: 0.62rem;
+    color: var(--ink-soft);
+    background: var(--surface);
+    border: 1px solid var(--rule);
+    padding: 2px 7px;
+    border-radius: 3px;
+    line-height: 1.5;
+  }
+
+  .skill-tag.highlight {
+    background: var(--accent-light);
+    border-color: var(--accent);
+    color: var(--accent);
+    font-weight: 500;
+  }
+
+  .education-entry { margin-bottom: 8px; }
+
+  .education-entry .ed-title {
+    font-size: 0.72rem;
+    font-weight: 600;
+    color: var(--ink);
+    line-height: 1.3;
+  }
+
+  .education-entry .ed-school {
+    font-size: 0.65rem;
+    color: var(--ink-muted);
+    margin-top: 1px;
+  }
+
+  /* ── Main Content ── */
+  .main {
+    padding: 32px 32px 20px 28px;
+  }
+
+  .header { margin-bottom: 16px; }
+
+  .name {
+    font-family: var(--font-display);
+    font-size: 2.3rem;
+    font-weight: 700;
+    color: var(--ink);
+    line-height: 1;
+    letter-spacing: -0.5px;
+  }
+
+  .title-role {
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    font-weight: 300;
+    color: var(--accent);
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-top: 6px;
+  }
+
+  .header-rule {
+    width: 48px;
+    height: 2.5px;
+    background: var(--accent);
+    margin-top: 14px;
+    border: none;
+  }
+
+  .profile {
+    font-size: 0.78rem;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    margin-bottom: 14px;
+    max-width: 520px;
+  }
+
+  .section { margin-bottom: 10px; }
+
+  .section-heading {
+    font-family: var(--font-body);
+    font-size: 0.65rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: var(--accent);
+    margin-bottom: 10px;
+    padding-bottom: 4px;
+    border-bottom: 1.5px solid var(--accent);
+  }
+
+  .job { margin-bottom: 11px; }
+  .job:last-child { margin-bottom: 0; }
+
+  .job-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px;
+  }
+
+  .job-title {
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--ink);
+  }
+
+  .job-date {
+    font-size: 0.68rem;
+    color: var(--ink-muted);
+    font-weight: 400;
+    white-space: nowrap;
+  }
+
+  .job-company {
+    font-size: 0.72rem;
+    color: var(--accent);
+    font-weight: 500;
+    margin-top: 1px;
+  }
+
+  .job-location {
+    font-size: 0.68rem;
+    color: var(--ink-muted);
+    font-weight: 300;
+  }
+
+  .job-desc {
+    font-size: 0.72rem;
+    color: var(--ink-soft);
+    margin-top: 4px;
+    font-style: italic;
+    line-height: 1.5;
+  }
+
+  .job-bullets {
+    list-style: none;
+    margin-top: 5px;
+    padding: 0;
+  }
+
+  .job-bullets li {
+    font-size: 0.72rem;
+    color: var(--ink-soft);
+    line-height: 1.55;
+    padding-left: 14px;
+    position: relative;
+    margin-bottom: 2px;
+  }
+
+  .job-bullets li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 7px;
+    width: 4px;
+    height: 4px;
+    background: var(--accent);
+    border-radius: 50%;
+  }
+
+  .job-minor {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding: 4px 0;
+  }
+
+  .job-minor .job-title { font-weight: 500; font-size: 0.74rem; }
+  .job-minor .job-company { display: inline; margin-left: 6px; font-size: 0.68rem; }
+
+  /* ── Print Styles ── */
+  @media print {
+    html { font-size: 15px; }
+    body { background: none; }
+    .page {
+      margin: 0;
+      box-shadow: none;
+      width: 100%;
+      height: 100vh;
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="page">
+  <!-- ── Sidebar ── -->
+  <aside class="sidebar">
+
+    <div class="sidebar-section">
+      <div class="sidebar-heading">Contact</div>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+        <span>103 Cubbington Road<br>Leamington Spa<br>CV32 7AL</span>
+      </div>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07 19.5 19.5 0 01-6-6A19.79 19.79 0 012.12 4.18 2 2 0 014.11 2h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>
+        <span>077 030 57 017</span>
+      </div>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        <a href="mailto:krzysztof.pajak.leamington@gmail.com">krzysztof.pajak<br>.leamington@gmail.com</a>
+      </div>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-4 0v7h-4v-7a6 6 0 016-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+        <a href="https://www.linkedin.com/in/krzysztof-pajak-software-developer/">LinkedIn Profile</a>
+      </div>
+      <div class="contact-item">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 00-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0020 4.77 5.07 5.07 0 0019.91 1S18.73.65 16 2.48a13.38 13.38 0 00-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 005 4.77a5.44 5.44 0 00-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 009 18.13V22"/></svg>
+        <a href="https://github.com/spiderko">github.com/spiderko</a>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-heading">Skills</div>
+
+      <div class="skill-category">
+        <div class="skill-category-name">Languages</div>
+        <div class="skill-tags">
+          <span class="skill-tag highlight">C#</span>
+          <span class="skill-tag highlight">TypeScript</span>
+          <span class="skill-tag highlight">T-SQL</span>
+          <span class="skill-tag">JavaScript</span>
+          <span class="skill-tag">HTML</span>
+          <span class="skill-tag">CSS</span>
+          <span class="skill-tag">SCSS</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-category-name">Frameworks</div>
+        <div class="skill-tags">
+          <span class="skill-tag highlight">.NET Core</span>
+          <span class="skill-tag highlight">ASP.NET</span>
+          <span class="skill-tag">Blazor</span>
+          <span class="skill-tag">React</span>
+          <span class="skill-tag">WPF</span>
+          <span class="skill-tag">jQuery</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-category-name">Architecture</div>
+        <div class="skill-tags">
+          <span class="skill-tag">SOLID</span>
+          <span class="skill-tag">DDD</span>
+          <span class="skill-tag">TDD</span>
+          <span class="skill-tag">REST API</span>
+          <span class="skill-tag">gRPC</span>
+          <span class="skill-tag">Micro Frontends</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-category-name">Data</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Dapper</span>
+          <span class="skill-tag">Entity Framework</span>
+          <span class="skill-tag">SSIS</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-category-name">Testing</div>
+        <div class="skill-tags">
+          <span class="skill-tag">xUnit</span>
+          <span class="skill-tag">NUnit</span>
+          <span class="skill-tag">Test Cafe</span>
+        </div>
+      </div>
+
+      <div class="skill-category">
+        <div class="skill-category-name">DevOps</div>
+        <div class="skill-tags">
+          <span class="skill-tag">Docker</span>
+          <span class="skill-tag">Kubernetes</span>
+          <span class="skill-tag">Jenkins</span>
+          <span class="skill-tag">Azure DevOps</span>
+          <span class="skill-tag">Octopus</span>
+          <span class="skill-tag">GitHub</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="sidebar-section">
+      <div class="sidebar-heading">Education</div>
+
+      <div class="education-entry">
+        <div class="ed-title">AAT Accounts Technician Level 3</div>
+        <div class="ed-school">Coventry City College<br>2010 &ndash; 2013</div>
+      </div>
+      <div class="education-entry">
+        <div class="ed-title">Book-keeping &amp; Accounts Level 1</div>
+        <div class="ed-school">Warwickshire College<br>2009</div>
+      </div>
+      <div class="education-entry">
+        <div class="ed-title">Motor Vehicle Technician</div>
+        <div class="ed-school">Vocational Secondary School<br>Wodzislaw Slaski, Poland<br>1993 &ndash; 1997</div>
+      </div>
+    </div>
+
+  </aside>
+
+  <!-- ── Main Content ── -->
+  <main class="main">
+
+    <header class="header">
+      <div class="name">Krzysztof Pajak</div>
+      <div class="title-role">Senior Software Developer</div>
+      <hr class="header-rule">
+    </header>
+
+    <p class="profile">
+      Experienced software developer with over ten years in the industry, constantly seeking innovative solutions to everyday problems. Strong analytical thinking and collaboration skills with a passion for problem-solving. Firm believer in core design principles that make software readable, maintainable, and testable.
+    </p>
+
+    <section class="section">
+      <div class="section-heading">Experience</div>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Senior C# Full Stack Software Developer</span>
+          <span class="job-date">Oct 2021 &ndash; Present</span>
+        </div>
+        <div class="job-company">Relex Solutions <span class="job-location">&middot; Stoke-on-Trent (Remote)</span></div>
+        <p class="job-desc">Large-scale store floor planning platforms for M&amp;S, WHSmith, and Lidl.</p>
+        <ul class="job-bullets">
+          <li>Decoupled tightly coupled API code into testable, exchangeable services</li>
+          <li>Created comprehensive unit tests ensuring high code coverage</li>
+          <li>Designed and developed new endpoints and underlying services</li>
+          <li>Built micro-frontend services in TypeScript and React to replace on-premise desktop solutions</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Senior Software Developer</span>
+          <span class="job-date">Jan &ndash; Oct 2021</span>
+        </div>
+        <div class="job-company">Redfish Systems <span class="job-location">&middot; Kettering (Part Remote)</span></div>
+        <p class="job-desc">Led a Clean Architecture project for energy supplier customer operations.</p>
+        <ul class="job-bullets">
+          <li>Architected customer gain/loss system interfacing CRM with external DCC API</li>
+          <li>Implemented loosely coupled layers with Dependency Injection and xUnit testing</li>
+          <li>Used Dapper and RoundhousE for data access and automated database deployment</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Software Developer</span>
+          <span class="job-date">Apr 2019 &ndash; Nov 2020</span>
+        </div>
+        <div class="job-company">Nimbus Property <span class="job-location">&middot; Warwick</span></div>
+        <p class="job-desc">Full stack development on the Nimbus Maps PropTech web application.</p>
+        <ul class="job-bullets">
+          <li>Implemented new UI designs using HTML, CSS, jQuery, JavaScript, and Bootstrap</li>
+          <li>Migrated map layers from Fusion Tables to WMS tiling for independent layer management</li>
+          <li>Introduced SCSS, module pattern, and database continuous delivery with RoundhousE</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Systems Developer</span>
+          <span class="job-date">May 2018 &ndash; Apr 2019</span>
+        </div>
+        <div class="job-company">Oxygen Finance Ltd <span class="job-location">&middot; Birmingham</span></div>
+        <ul class="job-bullets">
+          <li>Built back-end for public sector financial systems using .NET Core 2.1, EF, and RabbitMQ</li>
+          <li>Created efficient data pipelines with comprehensive unit and integration tests</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Database Developer</span>
+          <span class="job-date">Feb 2016 &ndash; May 2018</span>
+        </div>
+        <div class="job-company">FPS Distribution Ltd <span class="job-location">&middot; Stratford-upon-Avon</span></div>
+        <ul class="job-bullets">
+          <li>Designed MS Access projects with Azure SQL back-end for business reporting</li>
+          <li>Re-engineered legacy Access solutions and improved UI/UX</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">Finance Assistant</span>
+          <span class="job-date">Dec 2013 &ndash; Feb 2016</span>
+        </div>
+        <div class="job-company">NHS Arden CSU <span class="job-location">&middot; Warwick</span></div>
+        <ul class="job-bullets">
+          <li>Developed Access projects to improve financial team performance and replace Excel workflows</li>
+        </ul>
+      </div>
+
+      <div class="job">
+        <div class="job-header">
+          <span class="job-title">BI Data Technician</span>
+          <span class="job-date">Jun &ndash; Sep 2013</span>
+        </div>
+        <div class="job-company">Codemasters <span class="job-location">&middot; Warwick</span></div>
+        <ul class="job-bullets">
+          <li>Analysed mobile games market data and created streamlined reports for the development team</li>
+        </ul>
+      </div>
+
+      <div class="job-minor">
+        <div><span class="job-title">Accounts &amp; Logistics Administrator</span><span class="job-company">A1 Fruit Ltd</span></div>
+        <span class="job-date">Jan 2010 &ndash; Jun 2013</span>
+      </div>
+
+      <div class="job-minor">
+        <div><span class="job-title">Order Picker &amp; VNA Forklift Operator</span><span class="job-company">EMI Distribution</span></div>
+        <span class="job-date">Sep 2006 &ndash; Apr 2009</span>
+      </div>
+
+    </section>
+
+  </main>
+</div>
+
+</body>
+</html>
