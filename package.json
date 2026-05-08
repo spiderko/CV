@@ -1,4 +1,8 @@
 {
+  "private": true,
+  "scripts": {
+    "build": "node build.mjs"
+  },
   "dependencies": {
     "puppeteer-core": "^24.43.0"
   }
