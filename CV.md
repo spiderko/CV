@@ -4,7 +4,7 @@
 
 ---
 
-103 Cubbington Road, Leamington Spa, CV32 7AL
+Leamington Spa, UK
 077 030 57 017 | [krzysztof.pajak.leamington@gmail.com](mailto:krzysztof.pajak.leamington@gmail.com) | [LinkedIn](https://www.linkedin.com/in/krzysztof-pajak-software-developer/) | [GitHub](https://github.com/spiderko)
 
 ---
